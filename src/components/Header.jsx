@@ -5,6 +5,7 @@ import {
   Bars4Icon,
 
 } from '@heroicons/react/24/outline'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 function Header() {
   return (
@@ -31,7 +32,7 @@ function Header() {
         </div>
 
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap ">
-          <div className="link">
+          <div className="link" onClick={signIn}>
             <p >Hello Amauri Ulloa </p>
             <p className="font-extrabold md:text-sm">Account & Lists </p>
           </div>

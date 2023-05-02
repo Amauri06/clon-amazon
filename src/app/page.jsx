@@ -8,7 +8,6 @@ export default function Home() {
       <main className="max-w-screen-2xl mx-auto">
         <Banner />
         <ProductFeed/>
-        <p></p>
       </main>
     </div>
   );
