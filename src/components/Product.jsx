@@ -1,28 +1,37 @@
 'use client'
 
-import { useState } from "react"
 import Image from "next/image"
 import {StarIcon} from '@heroicons/react/24/solid'
+import { useDispatch } from "react-redux";
+import { addToBasket } from "@/app/redux/slices/basketSlice";
+import CreateRandomNumberAndPrime from "@/functions/createRandomNumberAndPrime";
+import { convertToDollars } from "@/functions/convertToDollars";
 
+const Product = ({id, title, price, description, category, image}) => {
+  
+  const {rating, hasPrime} = CreateRandomNumberAndPrime()
 
-const MAX_RATING = 5;
-const MIN_RATING = 1;
+  const dispatch = useDispatch()
+  const usDollar = convertToDollars()
 
-function Product({id, title, price, description, category, image}) {
-  const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1 )) + MIN_RATING
-  )
+ const addItemToBasket = ()=>{
 
-  const [hasPrime] = useState(Math.random() < 0.5)
-
-  let USDollar = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-
-
+    const product = {
+      id, 
+      title,
+      price,
+      description,
+      category,
+      image,
+      hasPrime,
+      rating
+    }
+    // enviando el producto a las acciones en redux
+    dispatch(addToBasket(product))
+ }
 
   return (
+    
     <div className="relative flex flex-col m-5 items-center bg-white z-30 p-10">
         <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>
 
@@ -47,7 +56,7 @@ function Product({id, title, price, description, category, image}) {
         <p className="text-xs mt-2 my-2 line-clamp-2">{description}</p>
 
         <div className="mb-5">
-            {USDollar.format(price)}
+            {usDollar.format(price)}
         </div>
 
         {hasPrime && (
@@ -57,7 +66,7 @@ function Product({id, title, price, description, category, image}) {
           </div>
         )} 
 
-        <button className="mt-auto button">Add to Basket</button>     
+        <button onClick={addItemToBasket} className="mt-auto button">Add to Basket</button>     
         
     </div>
   )

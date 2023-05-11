@@ -1,19 +1,27 @@
-import Product from "./Product";
-const getData = async () =>{
-  const res = await fetch('https://fakestoreapi.com/products', {cache: 'no-store'})
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
+import Product from "./Product";
+
+ async function getData(){
+
+  const res = await fetch('https://fakestoreapi.com/products', {cache:'no-store'})
+  
+  if(!res.ok){
+
+    throw new Error('failed fetch data')
   }
 
- return res.json()
-}
+  return res.json();
+  
+ }
+ 
 
+ const ProductFeed = async () =>  {
 
-async function ProductFeed() {
- const products = await getData();
+const products =  await getData()
+
 
   return (
+    
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
       md:-mt-52 mx-auto
     ">
