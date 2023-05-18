@@ -19,7 +19,7 @@ function Header() {
               alt="logo de amazon"
               width={150}
               height={40}
-              className="cursor-pointer object-contain "
+              className="cursor-pointer object-contain  "
             />
           </Link>
         </div>
