@@ -10,7 +10,7 @@ function Checkout() {
     <div className="bg-gray-100">
       <main className="lg:flex max-w-screen-xl mx-auto ">
         {/* Left */}
-        <div className=" grow m-5 shadow-sm border border-red-600  ">
+        <div className=" grow m-5 shadow-sm   ">
           <Image
             src="https://links.papareact.com/ikj"
             alt="logo anuncio de amazon"

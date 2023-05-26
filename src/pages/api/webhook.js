@@ -1,5 +1,4 @@
 
-
 import { buffer } from "micro";
 import * as admin from "firebase-admin";
 
@@ -40,7 +39,7 @@ const fullfillOrder = async (session) => {
   }
 };
 
-export default async (req, res) => {
+export default async function handler (req, res)  {
   try {
   } catch (error) {
     console.error(error);
@@ -82,10 +81,6 @@ export const config = {
     externalResolver: true,
   },
 };
-
-
-
-
 
 
 
